@@ -14,7 +14,7 @@ variables:
   armConnection: 'test-connection'
   imageRepository: 'nodeapp'
   containerRegistry: 'dotnetreg3.azurecr.io'
-  appName: 'dockerapppd'
+  appName: 'testwapp3'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   tag: '$(Build.BuildId)'
 
