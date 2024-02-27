@@ -13,6 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'docker-connection'
   imageRepository: 'nodeapp'
   containerRegistry: 'dotnetreg3.azurecr.io'
+  appName: 'dockerapppd'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   tag: '$(Build.BuildId)'
 
@@ -24,6 +25,7 @@ stages:
     displayName: Build
     pool: nodepool
     steps:
+
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
@@ -33,3 +35,12 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+     ## Deploy container in web app
+    - task: AzureWebAppContainer@1
+      displayName: 'Azure Web App on Container Deploy'
+      inputs:
+        azureSubscription: $(dockerRegistryServiceConnection)          # Azure Resource Connection
+        appName: $(appName)
+        containers: $(containerRegistry)/$(imageRepository):$(tag)
+        containerCommand: 'npm start'
