@@ -17,7 +17,7 @@ variables:
   appName: 'testwapp3'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
   #tag: '$(Build.BuildId)'
-  tag: '60'
+  tag: '58'
 
 stages:
 - stage: Build
