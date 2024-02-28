@@ -16,8 +16,8 @@ variables:
   containerRegistry: 'dotnetreg3.azurecr.io'
   appName: 'testwapp3'
   dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
-  #tag: '$(Build.BuildId)'
-  tag: '58'
+  tag: '$(Build.BuildId)'
+  #tag: '58'
 
 stages:
 - stage: Build
